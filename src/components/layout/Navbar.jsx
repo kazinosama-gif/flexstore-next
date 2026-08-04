@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 
@@ -58,15 +57,13 @@ export default function Navbar() {
       <motion.div
         animate={{
           y: scrolled ? -4 : 0,
-          scale: scrolled ? 0.98 : 1,
+          scale: scrolled ? 0.985 : 1,
         }}
-        transition={{
-          duration: 0.25,
-        }}
+        transition={{ duration: 0.25 }}
         className={`mt-5 flex w-full max-w-7xl items-center justify-between rounded-2xl border px-6 transition-all duration-300 ${
           scrolled
-            ? "border-gray-200/70 bg-white/90 py-3 shadow-xl backdrop-blur-2xl"
-            : "border-white/40 bg-white/80 py-4 shadow-lg backdrop-blur-xl"
+            ? "border-border bg-background/90 py-3 shadow-xl backdrop-blur-2xl"
+            : "border-border/60 bg-background/80 py-4 backdrop-blur-xl"
         }`}
       >
 
@@ -83,7 +80,7 @@ export default function Navbar() {
 
           <span className="text-3xl font-extrabold tracking-tight">
 
-            <span className="text-[#111827]">
+            <span className="text-foreground">
               Flex
             </span>
 
@@ -107,7 +104,7 @@ export default function Navbar() {
               className={`relative text-[15px] font-medium transition-all duration-300 ${
                 activeSection === item.id
                   ? "text-[#6E8B3D]"
-                  : "text-gray-600 hover:text-[#6E8B3D]"
+                  : "text-muted-foreground hover:text-[#6E8B3D]"
               }`}
             >
 
@@ -131,6 +128,8 @@ export default function Navbar() {
         {/* Right */}
 
         <div className="flex items-center gap-3">
+
+          <ThemeToggle />
 
           <Button
             onClick={() => scrollToSection("#cta")}
