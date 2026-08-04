@@ -26,21 +26,21 @@ export default function DashboardShell({ children }) {
       }}
       className="relative mx-auto max-w-[620px] perspective-[1400px]"
     >
-      {/* Glow */}
+      {/* Primary Glow */}
 
-      <div className="absolute inset-0 rounded-[42px] bg-[#DCE8C6] opacity-45 blur-[90px]" />
+      <div className="absolute inset-0 rounded-[42px] bg-[#DCE8C6] opacity-45 blur-[90px] dark:bg-[#365124]/40" />
 
       {/* Secondary Glow */}
 
-      <div className="absolute left-10 top-10 h-48 w-48 rounded-full bg-[#EEF4E5] opacity-60 blur-[100px]" />
+      <div className="absolute left-10 top-10 h-48 w-48 rounded-full bg-[#EEF4E5] opacity-60 blur-[100px] dark:bg-[#23311C]/40" />
 
       {/* Dashboard */}
 
-      <div className="relative overflow-hidden rounded-[34px] border border-gray-200/80 bg-white/90 p-5 shadow-[0_45px_120px_rgba(0,0,0,0.14)] backdrop-blur-xl">
+      <div className="relative overflow-hidden rounded-[34px] border border-border bg-card/90 p-5 shadow-[0_45px_120px_rgba(0,0,0,0.14)] backdrop-blur-xl transition-colors duration-300 dark:shadow-[0_45px_120px_rgba(0,0,0,0.55)]">
 
         {/* Browser */}
 
-        <div className="mb-5 flex items-center justify-between border-b border-gray-100 pb-4">
+        <div className="mb-5 flex items-center justify-between border-b border-border pb-4">
 
           <div className="flex gap-2">
 
@@ -52,7 +52,7 @@ export default function DashboardShell({ children }) {
 
           </div>
 
-          <div className="rounded-full bg-gray-100 px-4 py-1 text-xs text-gray-500">
+          <div className="rounded-full bg-muted px-4 py-1 text-xs text-muted-foreground">
             flexstore.app
           </div>
 
@@ -63,6 +63,7 @@ export default function DashboardShell({ children }) {
         {children}
 
       </div>
+
     </motion.div>
   );
 }

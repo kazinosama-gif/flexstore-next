@@ -8,10 +8,10 @@ export function Heading({
   const Tag = level;
 
   const styles = {
-    h1: "text-5xl md:text-7xl lg:text-8xl font-black tracking-[-3px] leading-[0.92] text-[#111827]",
-    h2: "text-4xl md:text-5xl font-bold tracking-[-2px] text-[#111827]",
-    h3: "text-2xl md:text-3xl font-semibold text-[#111827]",
-    h4: "text-xl font-semibold text-[#111827]",
+    h1: "text-5xl md:text-7xl lg:text-8xl font-black tracking-[-3px] leading-[0.92] text-foreground",
+    h2: "text-4xl md:text-5xl font-bold tracking-[-2px] text-foreground",
+    h3: "text-2xl md:text-3xl font-semibold text-foreground",
+    h4: "text-xl font-semibold text-foreground",
   };
 
   return (
@@ -27,9 +27,9 @@ export function Text({
   size = "md",
 }) {
   const styles = {
-    sm: "text-sm leading-6 text-gray-500",
-    md: "text-lg leading-8 text-gray-600",
-    lg: "text-xl leading-9 text-gray-600",
+    sm: "text-sm leading-6 text-muted-foreground",
+    md: "text-lg leading-8 text-muted-foreground",
+    lg: "text-xl leading-9 text-muted-foreground",
   };
 
   return (
@@ -46,7 +46,7 @@ export function Label({
   return (
     <span
       className={clsx(
-        "inline-flex items-center rounded-full border border-[#D8E4BE] bg-[#EEF3E5] px-5 py-2 text-sm font-semibold text-[#6E8B3D]",
+        "inline-flex items-center rounded-full border border-[#D8E4BE] bg-[#EEF3E5] px-5 py-2 text-sm font-semibold text-[#6E8B3D] dark:border-[#4F6630] dark:bg-[#2B3A22]",
         className
       )}
     >
