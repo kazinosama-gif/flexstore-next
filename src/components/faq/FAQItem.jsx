@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 
+import { Card } from "@/components/ui/card";
+
 export default function FAQItem({
   question,
   answer,
@@ -10,14 +12,14 @@ export default function FAQItem({
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="rounded-[28px] border border-gray-200 bg-white">
+    <Card className="overflow-hidden rounded-[28px] border-border transition-all duration-300 hover:border-[#6E8B3D]/40">
 
       <button
         onClick={() => setOpen(!open)}
         className="flex w-full items-center justify-between p-7 text-left"
       >
 
-        <span className="text-lg font-semibold text-[#111827]">
+        <span className="text-lg font-semibold text-foreground">
           {question}
         </span>
 
@@ -30,11 +32,11 @@ export default function FAQItem({
       </button>
 
       {open && (
-        <div className="px-7 pb-7 text-gray-600 leading-8">
+        <div className="px-7 pb-7 leading-8 text-muted-foreground">
           {answer}
         </div>
       )}
 
-    </div>
+    </Card>
   );
 }

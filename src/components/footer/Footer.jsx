@@ -6,7 +6,7 @@ import FooterBottom from "./FooterBottom";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-gray-200 bg-white">
+    <footer className="border-t border-border bg-background transition-colors duration-300">
 
       <Section className="py-24">
 

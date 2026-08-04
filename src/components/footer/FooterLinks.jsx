@@ -44,7 +44,7 @@ export default function FooterLinks() {
       {columns.map((column) => (
         <div key={column.title}>
 
-          <h4 className="mb-5 text-lg font-semibold text-[#111827]">
+          <h4 className="mb-5 text-lg font-semibold text-foreground">
             {column.title}
           </h4>
 
@@ -54,7 +54,7 @@ export default function FooterLinks() {
               <a
                 key={link}
                 href="#"
-                className="block text-gray-600 transition hover:text-[#6E8B3D]"
+                className="block text-muted-foreground transition-all duration-300 hover:text-[#6E8B3D]"
               >
                 {link}
               </a>

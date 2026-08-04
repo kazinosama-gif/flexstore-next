@@ -7,17 +7,17 @@ export default function ShowcaseContent() {
   return (
     <div className="max-w-xl">
 
-      <span className="inline-flex rounded-full border border-[#DDE7CA] bg-[#F5F8EE] px-4 py-2 text-sm font-medium text-[#6E8B3D]">
+      <span className="inline-flex rounded-full border border-[#DDE7CA] bg-[#F5F8EE] px-4 py-2 text-sm font-medium text-[#6E8B3D] transition-colors dark:border-[#4F6630] dark:bg-[#2B3A22]">
         Product Overview
       </span>
 
-      <h2 className="mt-6 text-5xl font-bold leading-tight text-[#111827]">
+      <h2 className="mt-6 text-5xl font-bold leading-tight text-foreground">
         One dashboard.
         <br />
         Complete control.
       </h2>
 
-      <p className="mt-6 text-lg leading-8 text-gray-600">
+      <p className="mt-6 text-lg leading-8 text-muted-foreground">
         Manage products, customers, orders and payments from a single,
         beautifully designed workspace built for growing businesses.
       </p>
@@ -40,7 +40,7 @@ export default function ShowcaseContent() {
 
         <Button
           size="lg"
-          className="rounded-full bg-[#6E8B3D] px-8"
+          className="rounded-full bg-[#6E8B3D] px-8 hover:bg-[#5C7632]"
         >
           <Play className="mr-2 h-5 w-5 fill-current" />
           Watch Demo
