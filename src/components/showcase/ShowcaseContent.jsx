@@ -7,7 +7,7 @@ export default function ShowcaseContent() {
   return (
     <div className="max-w-xl">
 
-      <span className="inline-flex rounded-full border border-[#DDE7CA] bg-[#F5F8EE] px-4 py-2 text-sm font-medium text-[#6E8B3D] transition-colors dark:border-[#4F6630] dark:bg-[#2B3A22]">
+      <span className="inline-flex rounded-full border border-border bg-muted px-4 py-2 text-sm font-medium text-[#6E8B3D]">
         Product Overview
       </span>
 
