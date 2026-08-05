@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useTheme } from "next-themes";
 
 const brands = [
   { name: "Apple", logo: "/logos/apple.svg" },
@@ -13,15 +14,18 @@ const brands = [
 ];
 
 export default function BrandLogos() {
+  const { resolvedTheme } = useTheme();
+
   return (
     <section className="py-16 lg:py-20">
       <div className="mx-auto max-w-7xl px-6">
 
-        <p className="text-center text-xs font-semibold uppercase tracking-[0.45em] text-gray-400">
+        <p className="text-center text-xs font-semibold uppercase tracking-[0.45em] text-muted-foreground">
           Trusted by innovative companies
         </p>
 
         <div className="mt-10 grid grid-cols-2 items-center gap-x-8 gap-y-8 md:grid-cols-3 lg:grid-cols-6">
+
           {brands.map((brand, index) => (
             <motion.div
               key={brand.name}
@@ -42,10 +46,15 @@ export default function BrandLogos() {
                 alt={brand.name}
                 width={120}
                 height={36}
-                className="h-8 w-auto opacity-60 grayscale transition-all duration-300 group-hover:scale-105 group-hover:opacity-100 group-hover:grayscale-0"
+                className={`h-8 w-auto transition-all duration-300 group-hover:scale-105 ${
+                  resolvedTheme === "dark"
+                    ? "invert opacity-70 group-hover:opacity-100"
+                    : "opacity-60 grayscale group-hover:opacity-100 group-hover:grayscale-0"
+                }`}
               />
             </motion.div>
           ))}
+
         </div>
 
       </div>

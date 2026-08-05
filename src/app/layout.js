@@ -3,6 +3,10 @@ import "./globals.css";
 
 import ThemeProvider from "@/components/theme/ThemeProvider";
 import Navbar from "@/components/layout/Navbar";
+import LoadingProvider from "@/components/loading/LoadingProvider";
+import MouseGlow from "@/components/background/MouseGlow";
+import ScrollProgress from "@/components/layout/ScrollProgress";
+import BackToTop from "@/components/layout/BackToTop";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,10 +30,22 @@ export default function RootLayout({ children }) {
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="relative min-h-full flex flex-col overflow-x-hidden">
         <ThemeProvider>
-          <Navbar />
-          {children}
+          <LoadingProvider>
+
+            <ScrollProgress />
+
+            <MouseGlow />
+
+            <BackToTop />
+
+            <div className="relative z-10">
+              <Navbar />
+              {children}
+            </div>
+
+          </LoadingProvider>
         </ThemeProvider>
       </body>
     </html>

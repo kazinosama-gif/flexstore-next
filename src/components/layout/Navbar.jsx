@@ -52,31 +52,48 @@ export default function Navbar() {
   };
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 flex justify-center px-4">
+    <header className="fixed inset-x-0 top-0 z-50 flex justify-center px-5">
 
       <motion.div
         animate={{
-          y: scrolled ? -4 : 0,
-          scale: scrolled ? 0.985 : 1,
+          y: scrolled ? -6 : 0,
+          scale: scrolled ? 0.975 : 1,
         }}
-        transition={{ duration: 0.25 }}
-        className={`mt-5 flex w-full max-w-7xl items-center justify-between rounded-2xl border px-6 transition-all duration-300 ${
+        transition={{
+          duration: 0.35,
+          ease: "easeOut",
+        }}
+        className={`mt-5 flex w-full max-w-7xl items-center justify-between rounded-2xl border transition-all duration-500 ${
           scrolled
-            ? "border-border bg-background/90 py-3 shadow-xl backdrop-blur-2xl"
-            : "border-border/60 bg-background/80 py-4 backdrop-blur-xl"
+            ? "border-white/10 bg-background/75 px-7 py-3 shadow-[0_20px_60px_rgba(0,0,0,0.18)] backdrop-blur-3xl"
+            : "border-border/60 bg-background/55 px-8 py-4 backdrop-blur-2xl"
         }`}
       >
 
         {/* Logo */}
 
-        <button
+        <motion.button
+          whileHover={{
+            scale: 1.04,
+          }}
+          whileTap={{
+            scale: 0.98,
+          }}
           onClick={() => scrollToSection("#home")}
           className="flex items-center gap-3"
         >
 
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#6E8B3D] text-lg font-bold text-white">
+          <motion.div
+            whileHover={{
+              rotate: 8,
+            }}
+            transition={{
+              duration: 0.25,
+            }}
+            className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#6E8B3D] text-lg font-bold text-white shadow-lg"
+          >
             F
-          </div>
+          </motion.div>
 
           <span className="text-3xl font-extrabold tracking-tight">
 
@@ -90,18 +107,24 @@ export default function Navbar() {
 
           </span>
 
-        </button>
+        </motion.button>
 
-        {/* Desktop */}
+        {/* Desktop Navigation */}
 
-        <nav className="hidden items-center gap-10 lg:flex">
+        <nav className="hidden items-center gap-9 lg:flex">
 
           {navigation.map((item) => (
 
-            <button
+            <motion.button
               key={item.id}
+              whileHover={{
+                y: -2,
+              }}
+              whileTap={{
+                scale: 0.96,
+              }}
               onClick={() => scrollToSection(item.href)}
-              className={`relative text-[15px] font-medium transition-all duration-300 ${
+              className={`relative text-[15px] font-medium transition-colors duration-300 ${
                 activeSection === item.id
                   ? "text-[#6E8B3D]"
                   : "text-muted-foreground hover:text-[#6E8B3D]"
@@ -114,29 +137,45 @@ export default function Navbar() {
 
                 <motion.div
                   layoutId="navbar-indicator"
-                  className="absolute -bottom-2 left-0 h-[2px] w-full rounded-full bg-[#6E8B3D]"
+                  transition={{
+                    type: "spring",
+                    stiffness: 380,
+                    damping: 30,
+                  }}
+                  className="absolute -bottom-2 left-0 h-[3px] w-full rounded-full bg-[#6E8B3D]"
                 />
 
               )}
 
-            </button>
+            </motion.button>
 
           ))}
 
         </nav>
 
-        {/* Right */}
+        {/* Right Side */}
 
         <div className="flex items-center gap-3">
 
           <ThemeToggle />
 
-          <Button
-            onClick={() => scrollToSection("#cta")}
-            className="hidden rounded-full bg-[#6E8B3D] px-6 py-6 transition-all hover:bg-[#5C7632] hover:shadow-lg lg:flex"
+          <motion.div
+            whileHover={{
+              y: -2,
+            }}
+            whileTap={{
+              scale: 0.97,
+            }}
           >
-            Start Free →
-          </Button>
+
+            <Button
+              onClick={() => scrollToSection("#cta")}
+              className="hidden rounded-full bg-[#6E8B3D] px-7 py-6 shadow-lg transition-all duration-300 hover:bg-[#5C7632] hover:shadow-[0_15px_40px_rgba(110,139,61,0.4)] lg:flex"
+            >
+              Start Free →
+            </Button>
+
+          </motion.div>
 
           <MobileMenu />
 

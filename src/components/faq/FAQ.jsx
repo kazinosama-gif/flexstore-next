@@ -1,4 +1,5 @@
 import Section from "@/components/layout/Section";
+import Reveal from "@/components/shared/Reveal";
 
 import FAQHeader from "./FAQHeader";
 import FAQList from "./FAQList";
@@ -9,9 +10,20 @@ export default function FAQ() {
 
       <div className="grid gap-20 lg:grid-cols-2 lg:items-start">
 
-        <FAQHeader />
+        <Reveal>
 
-        <FAQList />
+          <FAQHeader />
+
+        </Reveal>
+
+        <Reveal
+          delay={0.15}
+          y={50}
+        >
+
+          <FAQList />
+
+        </Reveal>
 
       </div>
 

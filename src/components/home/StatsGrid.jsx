@@ -7,28 +7,33 @@ import {
   TrendingUp,
 } from "lucide-react";
 
+import CountUp from "./CountUp";
+
 const stats = [
   {
     title: "Revenue",
-    value: "$148K",
+    value: 148,
+    prefix: "$",
+    suffix: "K",
     change: "+18%",
     icon: DollarSign,
   },
   {
     title: "Orders",
-    value: "1,248",
+    value: 1248,
     change: "+12%",
     icon: ShoppingCart,
   },
   {
     title: "Customers",
-    value: "8,942",
+    value: 8942,
     change: "+9%",
     icon: Users,
   },
   {
     title: "Growth",
-    value: "24%",
+    value: 24,
+    suffix: "%",
     change: "+4%",
     icon: TrendingUp,
   },
@@ -44,12 +49,12 @@ export default function StatsGrid() {
         return (
           <div
             key={item.title}
-            className="rounded-[24px] border border-border bg-card p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:hover:border-[#6E8B3D]/40"
+            className="group rounded-[24px] border border-border bg-card p-5 transition-all duration-300 hover:-translate-y-2 hover:border-[#6E8B3D]/40 hover:shadow-xl"
           >
 
             <div className="flex items-center justify-between">
 
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#EEF3E5] dark:bg-[#2B3A22]">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#EEF3E5] transition-transform duration-300 group-hover:scale-110 dark:bg-[#2B3A22]">
 
                 <Icon
                   size={18}
@@ -68,8 +73,14 @@ export default function StatsGrid() {
               {item.title}
             </p>
 
-            <h2 className="mt-1 text-3xl font-bold text-foreground">
-              {item.value}
+            <h2 className="mt-2 text-3xl font-bold text-foreground">
+
+              <CountUp
+                end={item.value}
+                prefix={item.prefix || ""}
+                suffix={item.suffix || ""}
+              />
+
             </h2>
 
           </div>

@@ -1,6 +1,9 @@
 "use client";
 
 import { useTheme } from "next-themes";
+import { motion } from "framer-motion";
+
+import CountUp from "./CountUp";
 
 import {
   ResponsiveContainer,
@@ -28,7 +31,26 @@ export default function RevenueChart() {
   const isDark = resolvedTheme === "dark";
 
   return (
-    <div className="mt-6 rounded-[28px] border border-border bg-card p-6 transition-colors duration-300">
+    <motion.div
+      initial={{
+        opacity: 0,
+        y: 30,
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+      }}
+      viewport={{
+        once: true,
+      }}
+      transition={{
+        duration: 0.7,
+      }}
+      whileHover={{
+        y: -5,
+      }}
+      className="mt-6 rounded-[28px] border border-border bg-card p-6 transition-all duration-300 hover:border-[#6E8B3D]/40 hover:shadow-xl"
+    >
 
       <div className="flex items-center justify-between">
 
@@ -39,20 +61,25 @@ export default function RevenueChart() {
           </p>
 
           <h2 className="mt-1 text-3xl font-bold text-foreground">
-            $148K
+            $
+            <CountUp end={148} />
+            K
           </h2>
 
         </div>
 
-        <button className="rounded-full bg-[#EEF3E5] px-4 py-2 text-sm font-semibold text-[#6E8B3D] transition-colors dark:bg-[#2B3A22]">
+        <button className="rounded-full bg-[#EEF3E5] px-4 py-2 text-sm font-semibold text-[#6E8B3D] transition-all duration-300 hover:scale-105 dark:bg-[#2B3A22]">
           2026
         </button>
 
       </div>
 
-      <div className="mt-6 h-[180px]">
+      <div className="mt-6 h-[190px]">
 
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer
+          width="100%"
+          height="100%"
+        >
 
           <AreaChart data={data}>
 
@@ -68,7 +95,7 @@ export default function RevenueChart() {
                 <stop
                   offset="0%"
                   stopColor="#6E8B3D"
-                  stopOpacity={0.35}
+                  stopOpacity={0.45}
                 />
 
                 <stop
@@ -83,7 +110,8 @@ export default function RevenueChart() {
 
             <CartesianGrid
               vertical={false}
-              stroke={isDark ? "#374151" : "#EFEFEF"}
+              stroke={isDark ? "#374151" : "#E5E7EB"}
+              strokeDasharray="5 5"
             />
 
             <XAxis
@@ -97,22 +125,37 @@ export default function RevenueChart() {
             />
 
             <Tooltip
+              cursor={{
+                stroke: "#6E8B3D",
+                strokeDasharray: "4 4",
+              }}
               contentStyle={{
-                backgroundColor: isDark ? "#1F2937" : "#FFFFFF",
-                border: "none",
-                borderRadius: "12px",
-                color: isDark ? "#F9FAFB" : "#111827",
+                background: isDark ? "#1F2937" : "#FFFFFF",
+                borderRadius: "16px",
+                border: "1px solid rgba(110,139,61,.15)",
+                color: isDark ? "#fff" : "#111827",
+                boxShadow: "0 12px 35px rgba(0,0,0,.12)",
               }}
               labelStyle={{
-                color: isDark ? "#F9FAFB" : "#111827",
+                color: isDark ? "#fff" : "#111827",
+                fontWeight: 600,
               }}
             />
 
             <Area
+              type="monotone"
               dataKey="revenue"
               stroke="#6E8B3D"
-              strokeWidth={3}
+              strokeWidth={4}
               fill="url(#fillRevenue)"
+              animationDuration={2200}
+              animationEasing="ease-out"
+              activeDot={{
+                r: 7,
+                fill: "#6E8B3D",
+                strokeWidth: 3,
+                stroke: "#fff",
+              }}
             />
 
           </AreaChart>
@@ -121,6 +164,6 @@ export default function RevenueChart() {
 
       </div>
 
-    </div>
+    </motion.div>
   );
 }

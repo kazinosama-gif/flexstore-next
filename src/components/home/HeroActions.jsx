@@ -1,31 +1,69 @@
 "use client";
 
 import { ArrowRight, Play } from "lucide-react";
+import { motion } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
 
 export default function HeroActions() {
   return (
-    <div className="mt-12 flex flex-wrap items-center gap-4">
+    <div className="mt-12 flex flex-wrap items-center gap-5">
 
-      <Button
-        size="lg"
-        className="h-14 rounded-full bg-[#6E8B3D] px-8 text-white shadow-lg transition-all duration-300 hover:bg-[#5C7632] hover:shadow-xl"
+      {/* Primary Button */}
+
+      <motion.div
+        whileHover={{
+          y: -5,
+          scale: 1.03,
+        }}
+        whileTap={{
+          scale: 0.97,
+        }}
+        transition={{
+          duration: 0.2,
+        }}
+        className="group relative overflow-hidden rounded-full"
       >
-        Start Free
 
-        <ArrowRight className="ml-2 h-5 w-5" />
-      </Button>
+        {/* Shimmer */}
 
-      <Button
-        variant="outline"
-        size="lg"
-        className="h-14 rounded-full border-gray-300 bg-white px-8 shadow-sm transition-all duration-300 hover:bg-gray-50"
+        <span className="absolute inset-0 -translate-x-[130%] skew-x-12 bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-1000 group-hover:translate-x-[220%]" />
+
+        <Button
+          size="lg"
+          className="relative h-14 rounded-full bg-[#6E8B3D] px-9 text-white shadow-[0_15px_40px_rgba(110,139,61,0.35)] transition-all duration-300 hover:bg-[#5C7632] hover:shadow-[0_20px_50px_rgba(110,139,61,0.5)]"
+        >
+          Start Free
+
+          <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+        </Button>
+
+      </motion.div>
+
+      {/* Secondary Button */}
+
+      <motion.div
+        whileHover={{
+          y: -5,
+          scale: 1.02,
+        }}
+        whileTap={{
+          scale: 0.97,
+        }}
+        transition={{
+          duration: 0.2,
+        }}
       >
-        <Play className="mr-2 h-4 w-4 fill-current" />
+        <Button
+          variant="outline"
+          size="lg"
+          className="h-14 rounded-full border-border bg-card px-9 shadow-md transition-all duration-300 hover:bg-muted hover:shadow-xl"
+        >
+          <Play className="mr-2 h-4 w-4 fill-current" />
 
-        Live Demo
-      </Button>
+          Live Demo
+        </Button>
+      </motion.div>
 
     </div>
   );
